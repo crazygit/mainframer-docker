@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 LABEL maintainer=Crazygit
-LABEL homepage="https://github.com/crazygit/mainframer-docker.git"
+LABEL homepage="https://github.com/crazygit/mainframer-docker"
 
 WORKDIR /android/sdk
 ENV ANDROID_SDK_ROOT /android/sdk

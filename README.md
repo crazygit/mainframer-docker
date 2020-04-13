@@ -1,0 +1,18 @@
+## 创建[Mainframer](https://github.com/buildfoundation/mainframer)远端服务器环境
+
+
+### 使用
+
+```bash
+$ docker run -p 2200:22 -d crazygit/mainframer
+```
+
+ssh进入容器, 默认用户名和密码都是`root`
+
+```bash
+$ ssh -p 2200 root@loalhost
+```
+
+### 客户端配置
+
+请参考[https://github.com/buildfoundation/mainframer/tree/2.x]，当前稳定版本是`2.x`版本

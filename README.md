@@ -15,4 +15,4 @@ $ ssh -p 2200 root@loalhost
 
 ### 客户端配置
 
-请参考[https://github.com/buildfoundation/mainframer/tree/2.x]，当前稳定版本是`2.x`版本
+请参考[项目文档](https://github.com/buildfoundation/mainframer/tree/2.x)，当前稳定版本是`2.x`版本

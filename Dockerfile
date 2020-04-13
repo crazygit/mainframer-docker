@@ -20,7 +20,7 @@ ENV ANDROID_SDK_ROOT /android/sdk
 # Install OpenJDK 8 and other dependences
 RUN apt-get update && \
     # required
-    apt-get install -y openjdk-8-jdk openssh-server wget unzip openssh-server && \
+    apt-get install -y openjdk-8-jdk openssh-server wget unzip openssh-server rsync && \
     # debug need
     apt-get install -y vim git && \
     apt-get clean && \

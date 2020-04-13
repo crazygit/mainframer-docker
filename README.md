@@ -1,4 +1,4 @@
-## 创建[Mainframer](https://github.com/buildfoundation/mainframer)远端服务器环境
+## 创建[mainframer](https://github.com/buildfoundation/mainframer)远端服务器环境
 
 
 ### 使用

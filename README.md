@@ -10,7 +10,7 @@ $ docker run -p 2200:22 -d crazygit/mainframer
 ssh进入容器, 默认用户名和密码都是`root`
 
 ```bash
-$ ssh -p 2200 root@loalhost
+$ ssh -p 2200 root@localhost
 ```
 
 ### 客户端配置

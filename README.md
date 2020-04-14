@@ -1,15 +1,15 @@
-## 创建[mainframer](https://github.com/buildfoundation/mainframer)远端android编译环境
+# 创建[mainframer](https://github.com/buildfoundation/mainframer)远端android编译环境
 
 
-### 使用
+## 使用
 
-直接使用
+### 直接使用
 
 ```bash
 $ docker run -p 2200:22 -d crazygit/mainframer
 ```
 
-配合gradle本机缓存以及阿里云镜像使用
+### 配合gradle本机缓存以及阿里云镜像使用
 
 ```bash
 $ docker run \
@@ -20,13 +20,16 @@ $ docker run \
        -d crazygit/mainframer
 ```
 
-使用`docker-compose`
+### 使用`docker-compose`
 
 ```bash
+$ git clone https://github.com/crazygit/mainframer-docker.git
+$ cd mainframer-docker
 $ docker-compose up -d
 ```
 
-ssh进入容器, 默认用户名和密码都是`root`
+## `ssh`连接
+ssh进入容器, 默认用户名和密码为`root/root`
 
 ```bash
 $ ssh -p 2200 root@localhost

@@ -1,0 +1,22 @@
+name: Publish Docker Image
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - ".Dockerfile"
+
+jobs:
+  build:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: ${{ github.repository }}/mainframer
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+          registry: docker.pkg.github.com
+          tags: "latest"

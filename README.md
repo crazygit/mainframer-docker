@@ -1,20 +1,28 @@
-## 创建[mainframer](https://github.com/buildfoundation/mainframer)远端android开编译环境
+## 创建[mainframer](https://github.com/buildfoundation/mainframer)远端android编译环境
 
 
 ### 使用
 
+直接使用
+
 ```bash
 $ docker run -p 2200:22 -d crazygit/mainframer
+```
 
-# 或使用gradle本机缓存和使用阿里云镜像
+配合gradle本机缓存以及阿里云镜像使用
+
+```bash
 $ docker run \
        -p 2200:22 \
        -v ${HOME}/.gradle:/root/.gradle \
        -v $(pwd)/mirror/init.gradle:/root/.gradle/init.gradle \
        -v $(pwd)/mirror/sources.list:/etc/apt/sources.list \
        -d crazygit/mainframer
+```
 
-# 或者使用docker-compose
+使用`docker-compose`
+
+```bash
 $ docker-compose up -d
 ```
 

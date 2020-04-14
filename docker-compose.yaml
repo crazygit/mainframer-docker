@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  mainframer:
+    image: crazygit/mainframer
+    restart: unless-stopped
+    ports:
+      - "2200:22"
+    volumes:
+      - ~/.gradle:/root/.gradle
+      - ./mirror/init.gradle:/root/.gradle/init.gradle
+      - ./mirror/sources.list:/etc/apt/sources.list

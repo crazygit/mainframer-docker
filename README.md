@@ -11,8 +11,8 @@ $ docker run \
        -p 2200:22 \
        -v ${HOME}/.gradle:/root/.gradle \
        -v $(pwd)/mirror/init.gradle:/root/.gradle/init.gradle \
-       -v $(pwd)/mirror/sources.list:/etc/aptt/soures.list \
-          crazygit/mainframer
+       -v $(pwd)/mirror/sources.list:/etc/apt/sources.list \
+       -d crazygit/mainframer
 ```
 
 ssh进入容器, 默认用户名和密码都是`root`

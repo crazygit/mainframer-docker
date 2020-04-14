@@ -1,45 +1,62 @@
+// https://help.aliyun.com/document_detail/102512.html
 allprojects {
+
+    def ALIYUN_JCENTER_URL = "https://maven.aliyun.com/repository/jcenter/"
+    // central仓和jcenter仓的聚合仓
+    def ALIYUN_PUBLIC = "https://maven.aliyun.com/repository/public/"
+    // def ALIYUN_CENTRAL = "https://maven.aliyun.com/repository/central"
+    def ALIYUN_GOOGLE_URL = "https://maven.aliyun.com/repository/google/"
+    def ALIYUN_GRADLE_PLUGIN_URL = "https://maven.aliyun.com/repository/gradle-plugin/"
+
     repositories {
-        def ALIYUN_REPOSITORY_URL = "https://maven.aliyun.com/repository/public/"
-        def ALIYUN_JCENTER_URL = "https://maven.aliyun.com/repository/jcenter/"
-        def ALIYUN_GOOGLE_URL = "https://maven.aliyun.com/repository/google/"
-        def ALIYUN_GRADLE_PLUGIN_URL = "https://maven.aliyun.com/repository/gradle-plugin/"
         all { ArtifactRepository repo ->
             if(repo instanceof MavenArtifactRepository){
                 def url = repo.url.toString()
-                if (url.startsWith("https://repo1.maven.org/maven2/")) {
-                    project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_REPOSITORY_URL"
-                    remove repo
+                if (url.startsWith('https://repo.maven.apache.org/maven2/') || url.startsWith("https://repo1.maven.org/maven2/")) {
+                    project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_PUBLIC"
+                    repo.setUrl(ALIYUN_PUBLIC)
                 }
                 if (url.startsWith("https://jcenter.bintray.com/")) {
                     project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL"
-                    remove repo
+                    repo.setUrl(ALIYUN_JCENTER_URL)
                 }
                 if (url.startsWith("https://dl.google.com/dl/android/maven2/")) {
                     project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL"
-                    remove repo
+                    repo.setUrl(ALIYUN_GOOGLE_URL)
                 }
                 if (url.startsWith("https://plugins.gradle.org/m2/")) {
                     project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_GRADLE_PLUGIN_URL"
-                    remove repo
+                    repo.setUrl(ALIYUN_GRADLE_PLUGIN_URL)
                 }
             }
         }
-        maven {
-            name ALIYUN_REPOSITORY
-            url ALIYUN_REPOSITORY_URL
-        }
-        maven {
-            name ALIYUN_JCENTER
-            url ALIYUN_JCENTER_URL
-        }
-        maven {
-            name ALIYUN_GOOGLE
-            url ALIYUN_GOOGLE_URL
-        }
-        maven {
-            name ALIYUN_GRADLE_PLUGIN
-            url ALIYUN_GRADLE_PLUGIN_URL
+     }
+
+    buildscript {
+        repositories {
+            all { ArtifactRepository repo ->
+                if(repo instanceof MavenArtifactRepository){
+                    def url = repo.url.toString()
+                    if (url.startsWith('https://repo.maven.apache.org/maven2/') || url.startsWith("https://repo1.maven.org/maven2/")) {
+                        project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_PUBLIC"
+                        repo.setUrl(ALIYUN_PUBLIC)
+                        // remove repo
+                    }
+                    if (url.startsWith("https://jcenter.bintray.com/")) {
+                        project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_JCENTER_URL"
+                        repo.setUrl(ALIYUN_JCENTER_URL)
+                        // remove repo
+                    }
+                    if (url.startsWith("https://dl.google.com/dl/android/maven2/")) {
+                        project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_GOOGLE_URL"
+                        repo.setUrl(ALIYUN_GOOGLE_URL)
+                    }
+                    if (url.startsWith("https://plugins.gradle.org/m2/")) {
+                        project.logger.lifecycle "All Projects Repository ${repo.url} replaced by $ALIYUN_GRADLE_PLUGIN_URL"
+                        repo.setUrl(ALIYUN_GRADLE_PLUGIN_URL)
+                    }
+                }
+            }
         }
     }
 }

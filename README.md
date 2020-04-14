@@ -1,3 +1,4 @@
+![Publish Packages](https://github.com/crazygit/mainframer-docker/workflows/.github/workflows/publish.yaml/badge.svg?branch=master&event=push)
 # 创建[mainframer](https://github.com/buildfoundation/mainframer)远端android编译环境
 
 

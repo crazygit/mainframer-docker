@@ -6,9 +6,11 @@ on:
       - master
     paths:
       - ".Dockerfile"
+      - ".github/workflows/publish.yaml"
 
 jobs:
   build:
+    name: Publish Packages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

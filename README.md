@@ -2,7 +2,7 @@
 
 [toc]
 
-# 使用[mainframer](https://github.com/buildfoundation/mainframer)实现在远端编译android apk
+# 使用[mainframer](https://github.com/buildfoundation/mainframer)实现远端编译android apk
 
 众多周知，android开发中，每次编译APK的时间都是比较长的，尤其是在本地机器配置较差的情况下，编译一次的时间就更长了。通过`mainframer`，我们可以实现在本机编码，并且在远端机器(一个拥有高
 配置的机器)上编译代码，然后自动将编译结果同步到本地然后安装调试的。
@@ -13,7 +13,7 @@
 
 借助docker，我们可以方便构的建远端的编译环境。
 
-## 服务端配置
+## 远端编译环境配置
 
 直接使用本仓库的docker镜像，可以让你轻松搞定远端的配置
 

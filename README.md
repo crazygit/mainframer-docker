@@ -6,22 +6,29 @@
 
 众多周知，android开发中，每次编译APK的时间都是比较长的，尤其是在本地机器配置较差的情况下，编译一次的时间就更长了。通过`mainframer`，我们可以实现在本机编码，并且在远端机器(一个拥有高
 配置的机器)上编译代码，然后自动将编译结果同步到本地然后安装调试的。
-整个过程就跟在本机编译一样，不仅可以大大节约编译时间，也可以降低对开发机器的配置要求。如果是在团队，搭建这样一个环境，让所有人开发人员共用，可以提高整个团队的开发效率，实乃开发必背的神器。
+整个过程就跟在本机编译一样，不仅可以大大节约编译时间，也可以降低对开发机器的配置要求。
+
+如果是在团队，搭建这样一个环境，让所有人开发人员共用，可以提高整个团队的开发效率，实乃开发必备的神器。
 
 
 借助docker，我们可以方便构的建远端的编译环境。
 
 ## 服务端配置
 
-直接使用本仓库的docker镜像，可以让你轻松搞定服务端的配置
+直接使用本仓库的docker镜像，可以让你轻松搞定远端的配置
 
 ### 直接使用
+
+
+这种方式适合远端编译机器处于网络条件较好，能自由畅游网络的情况下。
 
 ```bash
 $ docker run -p 2200:22 -d crazygit/mainframer
 ```
 
 ### 配合gradle本机缓存以及阿里云镜像使用
+
+在编译过程中，会下载很多依赖包，由于众多周知的原因，我们需要使用各种源镜像才能流程编译
 
 ```bash
 $ docker run \
@@ -33,6 +40,8 @@ $ docker run \
 ```
 
 ### 使用`docker-compose`
+
+上面命令太长了，使用`docker-compose`简化下。
 
 ```bash
 $ git clone https://github.com/crazygit/mainframer-docker.git
@@ -59,7 +68,7 @@ $ ssh -p 2200 root@localhost
 
 #### ssh免密码登录配置
 
-参考[文档](https://github.com/buildfoundation/mainframer/blob/v2.1.0/docs/SETUP_LOCAL.md)配置好本机能免ssh密码登录远端服务器，插件的原理就是使用`rsync`,通过`ssh`协议在远端和本地同步文件。
+参考[文档](https://github.com/buildfoundation/mainframer/blob/v2.1.0/docs/SETUP_LOCAL.md)配置好本机能免ssh密码登录远端服务器，插件的原理就是使用`rsync`命令，通过`ssh`协议在远端和本地同步文件。
 
 #### 安装插件
 
@@ -70,17 +79,18 @@ $ ssh -p 2200 root@localhost
 **注意**: _由于插件的配置只影响当前项目，所以每次新建项目都需要执行下面的配置操作_
 
 
-首先配置远端服务器的信息, 在`Tools` -> `Mainframer` -> `Configure Mainframer in Project`
+首先配置远端编译机器的信息, 在`Tools` -> `Mainframer` -> `Configure Mainframer in Project`
 
 ![Configure Mainframer in Project](http://images.wiseturtles.com/1586854091.png)
 
+打开之后，可以选择使用`mainframer`的版本，以及远端编译机器的名字, 和默认的编译命令。这里我设置为`./gralew build`(为什么不设置为`./gralew assemble`? 可以参考[问答](https://stackoverflow.com/a/44185464/1957625))。
 
-打开之后，可以选择使用`mainframer`的版本，以及远端服务器的名字, 和默认的编译命令，这里我设置为`./gralew build`(为什么不设置为`./gralew assemble`? 可以参考[这里的问答](https://stackoverflow.com/a/44185464/1957625))。注意修改红色框里的远端机器信息为你自己使用的远端机器信息
+_注意修改红色框里的远端机器信息为你自己使用的远端机器信息_
 
 ![Configure Mainframer for Project](http://images.wiseturtles.com/1586855079.png)
 
 
-配置好之后，插件会自动下载`mainframer`插件，然后会看到一个弹窗,让我们选择配置模板，这里我们选择`Android`就可以了。(是的，`mainframer`不关只是用于`android`开发，也支持其它项目的开发)
+配置好之后，插件会自动下载`mainframer`插件，然后会看到一个弹窗,让我们选择配置模板，这里我们选择`Android`就可以了。(是的，`mainframer`不光只是用于`android`开发，也支持其它项目的开发)
 
 ![config templates](http://images.wiseturtles.com/1586855293.png)
 

@@ -28,7 +28,7 @@ ENV ANDROID_SDK_ROOT=/android/sdk \
     ANDROID_HOME=/android/sdk
 
 # add android env to the begin of file ~/.bashrc (测试发现添加到~/.bashrc文件末尾不生效)
-RUN echo -e "export ANDROID_HOME=${ANDROID_HOME}\nexport ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT}\n" | cat - ~/.bashrc > bashrc.tmp && mv bashrc.tmp ~/.bashrc
+RUN bash -c 'echo -e "export ANDROID_HOME=${ANDROID_HOME}\nexport ANDROID_SDK_ROOT=${ANDROID_SDK_ROOT}\n"' | cat - ~/.bashrc > bashrc.tmp && mv bashrc.tmp ~/.bashrc
 
 # Install OpenJDK 8 and other dependences
 RUN apt-get update && \

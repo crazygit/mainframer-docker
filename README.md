@@ -13,6 +13,9 @@ $ docker run \
        -v $(pwd)/mirror/init.gradle:/root/.gradle/init.gradle \
        -v $(pwd)/mirror/sources.list:/etc/apt/sources.list \
        -d crazygit/mainframer
+
+# 或者使用docker-compose
+$ docker-compose up -d
 ```
 
 ssh进入容器, 默认用户名和密码都是`root`
@@ -24,3 +27,5 @@ $ ssh -p 2200 root@localhost
 ### 客户端配置
 
 请参考[项目文档](https://github.com/buildfoundation/mainframer/tree/2.x)，当前稳定版本是`2.x`版本
+
+配合插件[Android Studio Plugin](https://github.com/elpassion/mainframer-intellij-plugin)使用效果更佳。

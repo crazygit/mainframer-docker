@@ -8,5 +8,6 @@ services:
       - "2200:22"
     volumes:
       - ~/.gradle:/root/.gradle
-      - ./mirror/init.gradle:/root/.gradle/init.gradle
-      - ./mirror/sources.list:/etc/apt/sources.list
+      - ./config/init.gradle:/root/.gradle/init.gradle
+      - ./config/gradle.properties:/root/.gradle/gradle.properties
+      - ./config/sources.list:/etc/apt/sources.list

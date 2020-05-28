@@ -9,7 +9,7 @@ WORKDIR /android/sdk
 ARG commandlinetools_linux=https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip
 
 # Replace apt mirror to speed up in China
-#COPY mirror/sources.list /etc/apt/sources.list
+#COPY config/sources.list /etc/apt/sources.list
 
 # Set the locale
 # https://stackoverflow.com/a/28406007/1957625

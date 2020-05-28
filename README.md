@@ -34,8 +34,9 @@ $ docker run -p 2200:22 -d crazygit/mainframer
 $ docker run \
        -p 2200:22 \
        -v ${HOME}/.gradle:/root/.gradle \
-       -v $(pwd)/mirror/init.gradle:/root/.gradle/init.gradle \
-       -v $(pwd)/mirror/sources.list:/etc/apt/sources.list \
+       -v $(pwd)/config/init.gradle:/root/.gradle/init.gradle \
+       -v $(pwd)/config/gradle.properties:/root/.gradle/gradle.properties \
+       -v $(pwd)/config/sources.list:/etc/apt/sources.list \
        -d crazygit/mainframer
 ```
 

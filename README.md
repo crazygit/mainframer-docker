@@ -31,6 +31,8 @@ $ docker run -p 2200:22 -d crazygit/mainframer
 在编译过程中，会下载很多依赖包，由于众所周知的原因，我们需要使用各种源镜像才能流畅编译
 
 ```bash
+$ git clone https://github.com/crazygit/mainframer-docker.git
+$ cd mainframer-docker
 $ docker run \
        -p 2200:22 \
        -v ${HOME}/.gradle:/root/.gradle \
